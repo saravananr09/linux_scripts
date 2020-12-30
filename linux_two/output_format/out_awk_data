@@ -1,0 +1,7 @@
+=====================================================
+User     UID GID Home            SHELL          
+=====================================================
+root     0   0   /root           /bin/bash      
+daemon   1   1   /usr/sbin       /usr/sbin/nologin
+bin      2   2   /bin            /usr/sbin/nologin
+sys      3   3   /dev            /usr/sbin/nologin

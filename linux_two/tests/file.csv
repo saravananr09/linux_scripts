@@ -1,0 +1,22 @@
+no, privs, go
+-rwxrwxrwx,1,,225,Dec,20,21:03,array_test.sh
+-rwxrwxrwx,1,,,93,Dec,20,21:03,arrya_file.sh
+-rwxrwxrwx,1,,236,Dec,25,19:24,csv_test.sh
+-rwxrwxrwx,1,,,84,Dec,20,21:03,every_hour.sh
+-rwxrwxrwx,1,,,14,Dec,25,19:24,file.csv
+-rwxrwxrwx,1,,112,Dec,20,21:03,file.sh
+-rwxrwxrwx,1,,677,Dec,20,21:03,fire_old.sh
+-rwxrwxrwx,1,,528,Dec,20,21:03,firing_sleep.sh
+-rwxrwxrwx,1,,607,Dec,20,21:03,firing_sleep_func.sh
+-rwxrwxrwx,1,,154,Dec,20,21:03,function.sh
+-rwxrwxrwx,1,1301,Dec,20,21:20,info_tables.sh
+-rwxrwxrwx,1,2210,Dec,20,21:03,kill_queries_load_or_huge_queries.sh
+-rwxrwxrwx,1,,148,Dec,20,21:03,kill_queries_with_function.sh
+-rwxrwxrwx,1,,141,Dec,20,21:03,mail_ex.sh
+-rwxrwxrwx,1,2359,Dec,21,15:42,mysql_backup.sh
+-rwxrwxrwx,1,2654,Dec,21,14:58,mysql_connection_testing.sh
+-rwxrwxrwx,1,,157,Dec,20,21:03,select_dbs.sh
+-rwxrwxrwx,1,2625,Dec,20,21:03,slave_lag.sh
+-rwxrwxrwx,1,1117,Dec,22,12:52,tbl_wise_bkup.sh
+-rwxrwxrwx,1,,147,Dec,20,21:03,test.sh
+-rwxrwxrwx,1,1911,Dec,20,22:54,v2select_loop.sh

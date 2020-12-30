@@ -1,0 +1,432 @@
+
+
+
+/// color code for bash
+
+Black        0;30     Dark Gray     1;30
+Red          0;31     Light Red     1;31
+Green        0;32     Light Green   1;32
+Brown/Orange 0;33     Yellow        1;33
+Blue         0;34     Light Blue    1;34
+Purple       0;35     Light Purple  1;35
+Cyan         0;36     Light Cyan    1;36
+Light Gray   0;37     White         1;37
+#echo -e "\033[1;33m $dump_file\e[0m";
+
+
+
+
+#command bytes;;  XXX /// linux scripting
+cat ./mysql/userpriv.txt | a=tr ":" " " |grep 'Y'|awk '{print $1}'
+ history | awk '{print $2}' | sort | uniq -c | sort -rn | head
+n1=5
+n2=10
+echo | awk -v x=$n1 -v y=$n2 -f program.awk
+
+// in array if need to delete element jus use delete
+
+
+
+    ////  command to get mysql users with show grants command
+ SELECT CONCAT('SHOW GRANTS FOR ''',user,'''@''',host,''';') FROM mysql.user;
+
+C:\users\91770\appdata\local\packages\canonicalgrouplimited.ubuntu18.04onwindows_79rhkp1fndgsc\localstate
+\rootfs\home\saravanan\mariadb\bin\mysqld
+
+select COLUMNS, COLUMN_PRIVILEGES, SCHEMA_PRIVILEGES, TABLES,TABLE_PRIVILEGES,USER_PRIVILEGES,VIEWS  from tables;
++---------------------------------------+
+| Tables_in_information_schema          |
++---------------------------------------+
+| CHARACTER_SETS                        |
+| COLLATIONS                            |
+| COLLATION_CHARACTER_SET_APPLICABILITY |
+| COLUMNS                               |
+| COLUMN_PRIVILEGES                     |
+| ENGINES                               |
+| EVENTS                                |
+| FILES                                 |
+| GLOBAL_STATUS                         |
+| GLOBAL_VARIABLES                      |
+| KEY_COLUMN_USAGE                      |
+| OPTIMIZER_TRACE                       |
+| PARAMETERS                            |
+| PARTITIONS                            |
+| PLUGINS                               |
+| PROCESSLIST                           |
+| PROFILING                             |
+| REFERENTIAL_CONSTRAINTS               |
+| ROUTINES                              |
+| SCHEMATA                              |
+| SCHEMA_PRIVILEGES                     |
+| SESSION_STATUS                        |
+| SESSION_VARIABLES                     |
+| STATISTICS                            |
+| TABLES                                |
+| TABLESPACES                           |
+| TABLE_CONSTRAINTS                     |
+| TABLE_PRIVILEGES                      |
+| TRIGGERS                              |
+| USER_PRIVILEGES                       |
+| VIEWS                                 |
+| INNODB_LOCKS                          |
+| INNODB_TRX                            |
+| INNODB_SYS_DATAFILES                  |
+| INNODB_FT_CONFIG                      |
+| INNODB_SYS_VIRTUAL                    |
+| INNODB_CMP                            |
+| INNODB_FT_BEING_DELETED               |
+| INNODB_CMP_RESET                      |
+| INNODB_CMP_PER_INDEX                  |
+| INNODB_CMPMEM_RESET                   |
+| INNODB_FT_DELETED                     |
+| INNODB_BUFFER_PAGE_LRU                |
+| INNODB_LOCK_WAITS                     |
+| INNODB_TEMP_TABLE_INFO                |
+| INNODB_SYS_INDEXES                    |
+| INNODB_SYS_TABLES                     |
+| INNODB_SYS_FIELDS                     |
+| INNODB_CMP_PER_INDEX_RESET            |
+| INNODB_BUFFER_PAGE                    |
+| INNODB_FT_DEFAULT_STOPWORD            |
+| INNODB_FT_INDEX_TABLE                 |
+| INNODB_FT_INDEX_CACHE                 |
+| INNODB_SYS_TABLESPACES                |
+| INNODB_METRICS                        |
+| INNODB_SYS_FOREIGN_COLS               |
+| INNODB_CMPMEM                         |
+| INNODB_BUFFER_POOL_STATS              |
+| INNODB_SYS_COLUMNS                    |
+| INNODB_SYS_FOREIGN                    |
+| INNODB_SYS_TABLESTATS                 |
++---------------------------------------+
+
+
+
+
+
+
+
+
+saravanan@DESKTOP-O7T942J:/mnt/e/linux_script_pratices$ 
+saravanan@DESKTOP-O7T942J:/mnt/e/linux_script_pratices$ bash select_loop.sh 
++ MYSQL=/mnt/e/back/vicky/mysql_base/bin
++ USER=root
++ SOCKET=/tmp/mysql78.sock
++ mysql_connection='/mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock'
+++ /mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock -sN -e 'show databases;'
++ mysql_db='information_schema
+customer
+mysql
+mysqltestdb
+performance_schema
+so1
+sys
+test
+world
+world_two'
++ get_databases
++ PS3='Please select the Database: '
++ select DB in ${mysql_db[*]}
+1) information_schema    5) performance_schema   9) world
+2) customer              6) so1                 10) world_two
+3) mysql                 7) sys
+4) mysqltestdb           8) test
+Please select the Database: 9
++ case $DB in
++ echo -e 'You have selected the world database ! \n'
+You have selected the world database !
+
++ echo -e 'Tables ==> \n'
+Tables ==>
+
++ get_tables world
++ PS3='type any index of the above table '
++ info_tables=($($MYSQL/mysql -uroot -S $SOCKET -sN -e "show tables from $DB"))
+++ /mnt/e/back/vicky/mysql_base/bin/mysql -uroot -S /tmp/mysql78.sock -sN -e 'show tables from world'
++ local info_tables
++ select table in ${info_tables[*]}
+1) city
+2) country
+3) countrylanguage
+type any index of the above table 1
++ case $table in
++ echo 'You have selected the city table'
+You have selected the city table
++ sleep 2
+
+
+above stats : when script successfully runs
+|||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+below stmt --> user when giving the wrong db name
+
+||||||||||| Failed
+saravanan@DESKTOP-O7T942J:/mnt/e/linux_script_pratices$ bash dump_mysql_table.sh 
++ MYSQL=/mnt/e/back/vicky/mysql_base/bin
++ USER=root
++ SOCKET=/tmp/mysql78.sock
++ mysql_connection='/mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock'       
+++ /mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock -sN -e 'show databases;'
++ mysql_db='information_schema
+customer
+mysql
+mysqltestdb       
+performance_schema
+so1
+sys
+test
+world
+world_two'
++ get_databases
++ PS3='Please select the Database: '
++ select DB in ${mysql_db[*]}
+1) information_schema    5) performance_schema   9) world
+2) customer              6) so1                 10) world_two
+3) mysql                 7) sys
+4) mysqltestdb           8) test
+Please select the Database: 12
++ case $DB in
++ echo -e 'You have selected the  database ! \n'
+You have selected the  database !
+
++ echo -e 'Tables ==> \n'
+Tables ==>
+
++ get_tables
++ PS3='type any index of the above table '
++ info_tables=($($MYSQL/mysql -uroot -S $SOCKET -sN -e "show tables from $DB"))
+++ /mnt/e/back/vicky/mysql_base/bin/mysql -uroot -S /tmp/mysql78.sock -sN -e 'show tables from '
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
++ local info_tables
++ select table in ${info_tables[*]}
++ break 2
+saravanan@DESKTOP-O7T942J:/mnt/e/linux_script_pratices$ 
+
+
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+
+saravanan@DESKTOP-O7T942J:/mnt/e/linux_script_pratices/other$ bash ../mysql_connection_testing.sh 
++ path=/mnt/e/linux_script_pratices/other
++ mysql='/mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock'
++ /mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock '-eselect id from world.city;' -s -N
+++ cat /mnt/e/linux_script_pratices/other/ids.txt
+++ wc -l
++ total=4079
++ i=1
++ '[' 1 -le 4079 ']'
+++ cat /mnt/e/linux_script_pratices/other/ids.txt
+++ head -1
+++ tail -1
+++ awk '-F ' '{print $1}'
++ id=129
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ uid=fYZEhXIku
+++ shuf -i 0-1000 -n 1
++ quantity=818
+++ shuf -i 0-100 -n 1
++ min_quantity=93
+++ shuf -i 0-1000 -n 1
++ max_quantity=79
+++ shuf -i 0-1000 -n 1
++ retail_price=80
+++ shuf -i 0-1000 -n 1
++ purchase_price=491
+++ shuf -i 0-1000 -n 1
++ whole_sale_price=730
+++ shuf -i 0-1000 -n 1
++ taxable_price=339
+++ shuf -i 0-1000 -n 1
++ mrp=2
+++ shuf -i 0-1000 -n 1
++ discount_price=92
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ site_mrp=zqzY61ZzR
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ mapping_key=cFA41XUsK
++ echo fYZEhXIku , 818, cFA41XUsK, zqzY61ZzR, 129
+fYZEhXIku , 818, cFA41XUsK, zqzY61ZzR, 129
++ sleep 10
+^C
+saravanan@DESKTOP-O7T942J:/mnt/e/linux_script_pratices/other$ 
+
+
+
+
+saravanan@DESKTOP-O7T942J:/mnt/e/linux_script_pratices/other$ bash ../mysql_connection_testing.sh 
++ path=/mnt/e/linux_script_pratices/other
++ mysql='/mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock'
++ /mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock '-eselect id from world.city;' -s -N
+++ cat /mnt/e/linux_script_pratices/other/ids.txt
+++ wc -l
++ total=4079
++ i=1
++ '[' 1 -le 4079 ']'
+++ cat /mnt/e/linux_script_pratices/other/ids.txt
+++ head -1
+++ tail -1
+++ awk '-F ' '{print $1}'
++ id=129
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ uid=AE9M5JGhD
+++ shuf -i 0-1000 -n 1
++ quantity=702
+++ shuf -i 0-100 -n 1
++ min_quantity=75
+++ shuf -i 0-1000 -n 1
++ max_quantity=252
+++ shuf -i 0-1000 -n 1
++ retail_price=570
+++ shuf -i 0-1000 -n 1
++ purchase_price=183
+++ shuf -i 0-1000 -n 1
++ whole_sale_price=971
+++ shuf -i 0-1000 -n 1
++ taxable_price=690
+++ shuf -i 0-1000 -n 1
++ mrp=858
+++ shuf -i 0-1000 -n 1
++ discount_price=409
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ site_mrp=IzqyqrGi2
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ mapping_key=h0prACkrh
++ echo AE9M5JGhD , 702, h0prACkrh, IzqyqrGi2, 129
+AE9M5JGhD , 702, h0prACkrh, IzqyqrGi2, 129
++ sleep 10
++ /mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock -e 'update world_two.city set Name='\''AE9M5JGhD'\'', CountryCode='\''702'\'', District='\''h0prACkrh'\'', Population='\''IzqyqrGi2'\'' where ID=129;'
++ (( i++ ))
++ '[' 2 -le 4079 ']'
+++ cat /mnt/e/linux_script_pratices/other/ids.txt
+++ head -2
+++ tail -1
+++ awk '-F ' '{print $1}'
++ id=1
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ uid=iUzBQz0Bn
+++ shuf -i 0-1000 -n 1
++ quantity=397
+++ shuf -i 0-100 -n 1
++ min_quantity=37
+++ shuf -i 0-1000 -n 1
++ max_quantity=164
+++ shuf -i 0-1000 -n 1
++ retail_price=48
+++ shuf -i 0-1000 -n 1
++ purchase_price=118
+++ shuf -i 0-1000 -n 1
++ whole_sale_price=330
+++ shuf -i 0-1000 -n 1
++ taxable_price=900
+++ shuf -i 0-1000 -n 1
++ mrp=622
+++ shuf -i 0-1000 -n 1
++ discount_price=692
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ site_mrp=I8QpClHIZ
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ mapping_key=FSsjCHU7I
++ echo iUzBQz0Bn , 397, FSsjCHU7I, I8QpClHIZ, 1
+iUzBQz0Bn , 397, FSsjCHU7I, I8QpClHIZ, 1
++ sleep 10
++ /mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock -e 'update world_two.city set Name='\''iUzBQz0Bn'\'', CountryCode='\''397'\'', District='\''FSsjCHU7I'\'', Population='\''I8QpClHIZ'\'' where ID=1;'
++ (( i++ ))
++ '[' 3 -le 4079 ']'
+++ cat /mnt/e/linux_script_pratices/other/ids.txt
+++ head -3
+++ tail -1
+++ awk '-F ' '{print $1}'
++ id=2
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ uid=t1RjgbwFZ
+++ shuf -i 0-1000 -n 1
++ quantity=267
+++ shuf -i 0-100 -n 1
++ min_quantity=60
+++ shuf -i 0-1000 -n 1
++ max_quantity=628
+++ shuf -i 0-1000 -n 1
++ retail_price=268
+++ shuf -i 0-1000 -n 1
++ purchase_price=395
+++ shuf -i 0-1000 -n 1
++ whole_sale_price=478
+++ shuf -i 0-1000 -n 1
++ taxable_price=791
+++ shuf -i 0-1000 -n 1
++ mrp=885
+++ shuf -i 0-1000 -n 1
++ discount_price=340
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ site_mrp=M7b1aK2XV
+++ head /dev/urandom
+++ tr -dc A-Za-z0-9
+++ head -c 9
+++ echo ''
++ mapping_key=22bcMhovD
++ echo t1RjgbwFZ , 267, 22bcMhovD, M7b1aK2XV, 2
+t1RjgbwFZ , 267, 22bcMhovD, M7b1aK2XV, 2
++ sleep 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
