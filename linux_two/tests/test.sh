@@ -1,10 +1,90 @@
 #OUTPUT=$(ls -1)
 #echo "${OUTPUT}"
 
-disk_usage=$(du -sh )
+# disk_usage=$(du -sh )
 
-echo "${disk_usage}"
+# echo "${disk_usage}"
 
-if(${disk_usage} | awk{$0}> 3 )
-	echo "success";
-	echo "succeed";
+# if(${disk_usage} | awk{$0}> 3 )
+# 	echo "success";
+# 	echo "succeed";
+
+#  getting user input and storing it in with array
+
+# set -x
+ declare -A config
+
+
+# read -p "Enter the basedir : " basedir
+# config+=([basedir]=$basedir) 
+
+mysql_vars=(port server-id datadir socket)
+setting_variables()
+{
+	local $1=="$key"
+	echo "$key"
+	for var in ${!mysql_vars[@]}
+	do
+		read -p "Enter the  ${mysql_vars[$var]} : " value
+		config+=([${mysql_vars[$var]}]="$value") 
+		# echo ${config[$var]};
+	done
+}
+# set +x
+setting_variables
+# set -x
+# echo ${config[@]};
+# echo ${!config[@]}
+# sleep 1
+for key in "${!config[@]}"
+do
+	if [ -n "${config[$key]}" ];then
+		echo "$key ===> ${config[$key]}"
+	else
+		echo "$key has no values"
+		setting_variables "$key"
+		unset config[$key]
+	fi
+done
+
+
+# echo ${config[@]}
+sleep 10
+
+# read -p "enter the port for the same : " port
+
+# config[port]="$port"
+# config[server-id]="121"
+# config[datadir]="/usr/local/mysql/slave_data"
+# config[socket]="/tmp/mysql78.sock"
+
+# for key in "${!config[@]}"
+# do
+# 	if [ -n "${config[$key]}" ];then
+# 		echo "$key ===> ${config[$key]}"
+# 	else
+# 		echo "$key has no values"
+# 		unset config[$key]
+# 	fi
+# done
+
+# if [ ${config[@]+_} ];then
+# 	echo "founded";
+# else 
+# 	echo "not founded";
+# fi
+
+set -x
+
+echo "${!config[@]}"
+
+sleep 10
+
+
+# if [ -n "$string" ]
+# then 
+# 	echo "string has values"
+# else
+# 	echo "havent"
+# fi
+
