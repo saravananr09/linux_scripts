@@ -17,6 +17,7 @@ Light Gray   0;37     White         1;37
 
 
 #command bytes;;  XXX /// linux scripting
+ps -ef |grep watch|awk '{system(sprintf("kill -9 %d",$2))}'  -- process killing with awk
 cat ./mysql/userpriv.txt | a=tr ":" " " |grep 'Y'|awk '{print $1}'
  history | awk '{print $2}' | sort | uniq -c | sort -rn | head
 n1=5
@@ -25,6 +26,28 @@ echo | awk -v x=$n1 -v y=$n2 -f program.awk
 
 // in array if need to delete element jus use delete
 
+
+Example 1, check for 'yes' in string (case insensitive):
+
+if [[ "${str,,}" == *"yes"* ]] ;then
+Example 2, check for 'yes' in string (case insensitive):
+
+if [[ "$(echo "$str" | tr '[:upper:]' '[:lower:]')" == *"yes"* ]] ;then
+Example 3, check for 'yes' in string (case sensitive):
+
+ if [[ "${str}" == *"yes"* ]] ;then
+Example 4, check for 'yes' in string (case sensitive):
+
+ if [[ "${str}" =~ "yes" ]] ;then
+Example 5, exact match (case sensitive):
+
+ if [[ "${str}" == "yes" ]] ;then
+Example 6, exact match (case insensitive):
+
+ if [[ "${str,,}" == "yes" ]] ;then
+Example 7, exact match:
+
+ if [ "$a" = "$b" ] ;then
 
 
     ////  command to get mysql users with show grants command
