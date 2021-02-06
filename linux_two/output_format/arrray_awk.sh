@@ -10,20 +10,20 @@ A=(Mysql MariaDB msSQL PSQL)
 B=(Firebase Mongo SimpleDB Hbase Cassandra )
 # IFS=$temp
 
-read privs
-if [ $privs == 'A' ]
-then
-    # echo "A"
-    privs=(${A[@]})
-else
-    # echo "B"
-    privs=(${B[@]})
-fi
+# read privs
+# if [ $privs == 'A' ]
+# then
+#     # echo "A"
+#     privs=(${A[@]})
+# else
+#     # echo "B"
+#     privs=(${B[@]})
+# fi
 
-awk -v var="${privs[*]}" 'BEGIN{
+awk -v var="${B[*]}" 'BEGIN{
     split(var,list," "); for (i=1;i<=length(list);i++) 
-
-    printf ("\033[1;35m %s \n" ,list[i] ) 
+    printf ("\033[1;35m %s \n" ,list[i] )
+    # printf ("\033[1;35m %s \n" ,var)  
     }'
 
 

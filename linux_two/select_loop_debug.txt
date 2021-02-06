@@ -1,6 +1,26 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /// color code for bash
 
 Black        0;30     Dark Gray     1;30
@@ -17,14 +37,19 @@ Light Gray   0;37     White         1;37
 
 
 #command bytes;;  XXX /// linux scripting
-ps -ef |grep watch|awk '{system(sprintf("kill -9 %d",$2))}'  -- process killing with awk
+ps -ef |grep bash|awk '{system(sprintf("kill -9 %d",$2))}'  -- process killing with awk
 cat ./mysql/userpriv.txt | a=tr ":" " " |grep 'Y'|awk '{print $1}'
  history | awk '{print $2}' | sort | uniq -c | sort -rn | head
 n1=5
 n2=10
-echo | awk -v x=$n1 -v y=$n2 -f program.awk
+echo | awk -v x=$n1 -v y=$n2 -f program.awk  
 
 // in array if need to delete element jus use delete
+
+
+i=$((i+1))
+((i=i+1))
+let "i=i+1"
 
 
 Example 1, check for 'yes' in string (case insensitive):
@@ -435,6 +460,42 @@ t1RjgbwFZ , 267, 22bcMhovD, M7b1aK2XV, 2
 
 
 
+
+saravanan@DESKTOP-O7T942J:~/scripts/linux_two/tests$ bash test_col_variables.sh
++ run_scr
++ local var
++ for var in ${!mysql_vars[@]}
++ defining_configs
++ read -p 'Enter the 0  port : ' value
+Enter the 0  port : 3306
++ config+=([${mysql_vars[$var]}]="$value")
++ for var in ${!mysql_vars[@]}
++ defining_configs
++ read -p 'Enter the 1  server-id : ' value
+Enter the 1  server-id : 1
++ config+=([${mysql_vars[$var]}]="$value")
++ for key in "${!config[@]}"
++ '[' -n 1 ']'
++ assigning_configs+=(["$key"]=${config[$key]})
++ for key in "${!config[@]}"
++ '[' -n 3306 ']'
++ assigning_configs+=(["$key"]=${config[$key]})
++ echo '***************************************************'
+***************************************************
++ echo '      Printing values from collected-variables     '
+      Printing values from collected-variables
++ echo '***************************************************'
+***************************************************
++ for output in "${!assigning_configs[@]}"
++ echo ' server-id=1'
+ server-id=1
++ for output in "${!assigning_configs[@]}"
++ echo ' port=3306'
+ port=3306
++ echo '********************* END ******************************'
+********************* END ******************************
++ exit 1
+saravanan@DESKTOP-O7T942J:~/scripts/linux_two/tests$
 
 
 

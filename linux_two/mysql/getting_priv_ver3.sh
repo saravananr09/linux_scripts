@@ -36,16 +36,40 @@ get_user()
 
 get_priv_mysqldb()
 {
+    # set -x
     read -p "Enter the user name " user;
     has_priv=($($mysql_con -e "select * from mysql.user where user='$user'\G" |grep 'Y'|awk '{print $1}'|cut -d ':' -f1))
+    A=(${has_priv[@]})
+    # echo ${A[@]};
+    awk -v var="${A[*]}" 'BEGIN{
+    split(var,list," "); for (i=1;i<=length(list);i++) 
+
+    printf (" %s \n" ,list[i] ) 
+    }'
+    # set +x
 }
 
-while true; do
-    # get_user
-    # sleep 4
-    get_priv_mysqldb
-done
 
+
+
+# while true; do
+#     # get_user
+#     # sleep 4
+#     get_priv_mysqldb
+#     exit
+# done
+
+
+ read -p "Enter the user name " user;
+    has_priv=($($mysql_con -e "select * from mysql.user where user='$user'\G" |grep 'Y'|awk '{print $1}'|cut -d ':' -f1))
+    A=(${has_priv[@]})
+    # echo ${A[@]};
+    awk -v var="${A[*]}" 'BEGIN{
+    split(var,list," "); 
+    for (i=1;i<=length(list);i++) 
+    printf (" %s \n " ,list[i] ) 
+    }'
+ exit
 
     
 

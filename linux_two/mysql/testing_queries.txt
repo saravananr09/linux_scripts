@@ -1,0 +1,78 @@
+MySQL [information_schema]> SELECT TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME, TABLE_TYPE, GRANTEE, PRIVILEGE_TYPE   FROM information_schema.TABLES   INNER JOIN information_schema.user_privileges USING (TABLE_CATALOG)   WHERE NOT TABLE_SCHEMA IN ('information_schema', 'performance_schema','mysql')    AND GRANTEE=CONCAT("'", REPLACE(CURRENT_USER(), '@', "'@'"), "'") limit 1;
++---------------+--------------+------------+------------+--------------------+----------------+
+| TABLE_CATALOG | TABLE_SCHEMA | TABLE_NAME | TABLE_TYPE | GRANTEE            | PRIVILEGE_TYPE |
++---------------+--------------+------------+------------+--------------------+----------------+
+| def           | customer     | city       | BASE TABLE | 'root'@'localhost' | SELECT         |
++---------------+--------------+------------+------------+--------------------+----------------+
+1 row in set (0.009 sec)
+
+MySQL [information_schema]> desc SELECT TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME, TABLE_TYPE, GRANTEE, PRIVILEGE_TYPE   FROM information_schema.TABLES   INNER JOIN information_schema.user_privileges U
+SING (TABLE_CATALOG)   WHERE NOT TABLE_SCHEMA IN ('information_schema', 'performance_schema','mysql')    AND GRANTEE=CONCAT("'", REPLACE(CURRENT_USER(), '@', "'@'"), "'") limit 1;
++----+-------------+-----------------+------------+------+---------------+------+---------+------+------+----------+----------------------------------------------------+
+| id | select_type | table           | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra                                              |
++----+-------------+-----------------+------------+------+---------------+------+---------+------+------+----------+----------------------------------------------------+
+|  1 | SIMPLE      | TABLES          | NULL       | ALL  | NULL          | NULL | NULL    | NULL | NULL |     NULL | Using where; Open_frm_only; Scanned all databases  |
+|  1 | SIMPLE      | user_privileges | NULL       | ALL  | NULL          | NULL | NULL    | NULL | NULL |     NULL | Using where; Using join buffer (Block Nested Loop) |
++----+-------------+-----------------+------------+------+---------------+------+---------+------+------+----------+----------------------------------------------------+
+2 rows in set, 1 warning (0.001 sec)
+
+MySQL [information_schema]> desc tables;
++-----------------+---------------------+------+-----+---------+-------+
+| Field           | Type                | Null | Key | Default | Extra |
++-----------------+---------------------+------+-----+---------+-------+
+| TABLE_CATALOG   | varchar(512)        | NO   |     |         |       |
+| TABLE_SCHEMA    | varchar(64)         | NO   |     |         |       |
+| TABLE_NAME      | varchar(64)         | NO   |     |         |       |
+| TABLE_TYPE      | varchar(64)         | NO   |     |         |       |
+| ENGINE          | varchar(64)         | YES  |     | NULL    |       |
+| VERSION         | bigint(21) unsigned | YES  |     | NULL    |       |
+| ROW_FORMAT      | varchar(10)         | YES  |     | NULL    |       |
+| TABLE_ROWS      | bigint(21) unsigned | YES  |     | NULL    |       |
+| AVG_ROW_LENGTH  | bigint(21) unsigned | YES  |     | NULL    |       |
+| DATA_LENGTH     | bigint(21) unsigned | YES  |     | NULL    |       |
+| MAX_DATA_LENGTH | bigint(21) unsigned | YES  |     | NULL    |       |
+| INDEX_LENGTH    | bigint(21) unsigned | YES  |     | NULL    |       |
+| DATA_FREE       | bigint(21) unsigned | YES  |     | NULL    |       |
+| AUTO_INCREMENT  | bigint(21) unsigned | YES  |     | NULL    |       |
+| CREATE_TIME     | datetime            | YES  |     | NULL    |       |
+| UPDATE_TIME     | datetime            | YES  |     | NULL    |       |
+| CHECK_TIME      | datetime            | YES  |     | NULL    |       |
+| TABLE_COLLATION | varchar(32)         | YES  |     | NULL    |       |
+| CHECKSUM        | bigint(21) unsigned | YES  |     | NULL    |       |
+| CREATE_OPTIONS  | varchar(255)        | YES  |     | NULL    |       |
+| TABLE_COMMENT   | varchar(2048)       | NO   |     |         |       |
++-----------------+---------------------+------+-----+---------+-------+
+21 rows in set (0.001 sec)
+
+MySQL [information_schema]> desc user_privileges;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| GRANTEE        | varchar(81)  | NO   |     |         |       |
+| TABLE_CATALOG  | varchar(512) | NO   |     |         |       |
+| PRIVILEGE_TYPE | varchar(64)  | NO   |     |         |       |
+| IS_GRANTABLE   | varchar(3)   | NO   |     |         |       |
++----------------+--------------+------+-----+---------+-------+
+4 rows in set (0.001 sec)
+
+MySQL [information_schema]>
+
+
+
+
+Master_DB [information_schema]$select TRIM("'" FROM GRANTEE )AS user from USER_PRIVILEGES _PRIVILEGES where GRANTEE like '%test%' and IS_GRANTABLE='no' limit 1;
++------------------+
+| user             |
++------------------+
+| test'@'localhost |
++------------------+
+1 row in set (0.028 sec)
+
+Master_DB [information_schema]$select grantee from schema_privileges where not GRANTEE=CONCAT("'", REPLACE(CURRENT_USER(), '@', "'@'"), "'") limit 1;
++-------------------------+
+| grantee                 |
++-------------------------+
+| 'mysql.sys'@'localhost' |
++-------------------------+
+1 row in set (0.001 sec)
+

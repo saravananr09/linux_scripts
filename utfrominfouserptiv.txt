@@ -1,0 +1,71 @@
+GRANTEE	TABLE_CATALOG	PRIVILEGE_TYPE	IS_GRANTABLE
+'root'@'localhost'	def	SELECT	YES
+'root'@'localhost'	def	INSERT	YES
+'root'@'localhost'	def	UPDATE	YES
+'root'@'localhost'	def	DELETE	YES
+'root'@'localhost'	def	CREATE	YES
+'root'@'localhost'	def	DROP	YES
+'root'@'localhost'	def	RELOAD	YES
+'root'@'localhost'	def	SHUTDOWN	YES
+'root'@'localhost'	def	PROCESS	YES
+'root'@'localhost'	def	FILE	YES
+'root'@'localhost'	def	REFERENCES	YES
+'root'@'localhost'	def	INDEX	YES
+'root'@'localhost'	def	ALTER	YES
+'root'@'localhost'	def	SHOW DATABASES	YES
+'root'@'localhost'	def	SUPER	YES
+'root'@'localhost'	def	CREATE TEMPORARY TABLES	YES
+'root'@'localhost'	def	LOCK TABLES	YES
+'root'@'localhost'	def	EXECUTE	YES
+'root'@'localhost'	def	REPLICATION SLAVE	YES
+'root'@'localhost'	def	REPLICATION CLIENT	YES
+'root'@'localhost'	def	CREATE VIEW	YES
+'root'@'localhost'	def	SHOW VIEW	YES
+'root'@'localhost'	def	CREATE ROUTINE	YES
+'root'@'localhost'	def	ALTER ROUTINE	YES
+'root'@'localhost'	def	CREATE USER	YES
+'root'@'localhost'	def	EVENT	YES
+'root'@'localhost'	def	TRIGGER	YES
+'root'@'localhost'	def	CREATE TABLESPACE	YES
+'mysql.session'@'localhost'	def	SUPER	NO
+'mysql.sys'@'localhost'	def	USAGE	NO
+'repluser'@'localhost'	def	REPLICATION SLAVE	NO
+'monitor'@'127.0.0.1'	def	SELECT	NO
+'saravanan'@'localhost'	def	SELECT	YES
+'saravanan'@'localhost'	def	INSERT	YES
+'saravanan'@'localhost'	def	UPDATE	YES
+'saravanan'@'localhost'	def	DELETE	YES
+'sara'@'localhost'	def	SELECT	YES
+'sara'@'localhost'	def	INSERT	YES
+'sara'@'localhost'	def	UPDATE	YES
+'sara'@'localhost'	def	DELETE	YES
+'vanan'@'localhost'	def	USAGE	NO
+'user1'@'localhost'	def	USAGE	NO
+'proxy_tester'@'localhost'	def	SELECT	NO
+'proxy_tester'@'localhost'	def	INSERT	NO
+'proxy_tester'@'localhost'	def	UPDATE	NO
+'proxy_tester'@'localhost'	def	DELETE	NO
+'proxy_tester'@'localhost'	def	CREATE	NO
+'proxy_tester'@'localhost'	def	DROP	NO
+'proxy_tester'@'localhost'	def	RELOAD	NO
+'proxy_tester'@'localhost'	def	SHUTDOWN	NO
+'proxy_tester'@'localhost'	def	PROCESS	NO
+'proxy_tester'@'localhost'	def	FILE	NO
+'proxy_tester'@'localhost'	def	REFERENCES	NO
+'proxy_tester'@'localhost'	def	INDEX	NO
+'proxy_tester'@'localhost'	def	ALTER	NO
+'proxy_tester'@'localhost'	def	SHOW DATABASES	NO
+'proxy_tester'@'localhost'	def	SUPER	NO
+'proxy_tester'@'localhost'	def	CREATE TEMPORARY TABLES	NO
+'proxy_tester'@'localhost'	def	LOCK TABLES	NO
+'proxy_tester'@'localhost'	def	EXECUTE	NO
+'proxy_tester'@'localhost'	def	REPLICATION SLAVE	NO
+'proxy_tester'@'localhost'	def	REPLICATION CLIENT	NO
+'proxy_tester'@'localhost'	def	CREATE VIEW	NO
+'proxy_tester'@'localhost'	def	SHOW VIEW	NO
+'proxy_tester'@'localhost'	def	CREATE ROUTINE	NO
+'proxy_tester'@'localhost'	def	ALTER ROUTINE	NO
+'proxy_tester'@'localhost'	def	CREATE USER	NO
+'proxy_tester'@'localhost'	def	EVENT	NO
+'proxy_tester'@'localhost'	def	TRIGGER	NO
+'proxy_tester'@'localhost'	def	CREATE TABLESPACE	NO

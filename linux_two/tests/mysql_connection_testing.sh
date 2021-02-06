@@ -3,9 +3,18 @@
 
 set -x
 
+# echo $((1 + $RANDOM % 10))
+
+# sleep 100
+
 path="/mnt/e/linux_script_pratices/other"
-mysql="/mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock"
-$mysql -e"select id from world.city;" -s -N > $path/ids.txt
+# mysql="/mnt/e/back/vicky/mysql_base/bin/mysql -u root -S /tmp/mysql78.sock"
+
+# proxy client connections
+mysql="/mnt/e/back/vicky/mysql_base/bin/mysql --login-path=local"
+sleep 4
+$mysql -sN -e "select id from world.city;" > $path/ids.txt
+sleep 1
 total=`cat $path/ids.txt | wc -l`
 i=1
 while [ $i -le $total ]
@@ -39,8 +48,8 @@ mapping_key=`head /dev/urandom | tr -dc A-Za-z0-9 | head -c 9 ; echo ''`
 #  echo $uid , $quantity, $mapping_key, $discount_price, $id;
 # sleep 25
 
-echo "insert world_two.city  values($id ,'$uid', '$quantity', '$mapping_key', $discount_price);" >> $path/inserts.sql 2>inserts.err
-$($mysql world_two < $path/inserts.sql) &
+ echo "insert into proxysql_testing.city(ID, Name, CountryCode, District, Population) values($id ,'$uid', '$quantity', '$mapping_key', $discount_price);" >> $path/inserts.sql 2>inserts.err
+$($mysql proxysql_testing < $path/inserts.sql) &
 
 
 # $($mysql -e "insert world_two.city  values($id ,\'$uid\', $quantity, $mapping_key, $site_mrp)";) &

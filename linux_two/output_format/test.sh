@@ -8,7 +8,10 @@ mysql_con="$MYSQL/mysql -u $USER -S $SOCKET"
 get_user() 
 {
     read -p "Enter the user name " user;
-    has_priv=($($mysql_con -e "select * from mysql.user where user='$user'\G" |grep 'Y'|awk '{print $1}'|cut -d ':' -f1))
+    if [[ ! -z $user ]]
+    then  
+        echo "user got it ";
+            has_priv=($($mysql_con -e "select * from mysql.user where user='$user'\G" |grep 'Y'|awk '{print $1}'|cut -d ':' -f1))
     grant='Grant_priv'
     user_priv=0;
     for priv_i in "${!has_priv[@]}"; do
@@ -30,6 +33,12 @@ get_user()
         echo -e "\033[1;35m ${has_priv[@]} \n \e[0m"
         echo $(column ${has_priv[@]});
     fi
+    else 
+        echo "username is invalid"
+        exit 0
+    fi
+    sleep 10
+
 } 
 
 while true; do

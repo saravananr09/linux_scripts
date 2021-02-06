@@ -48,7 +48,7 @@ declare -A field
 chk_test(){
     
     cond="'%where%'";
-    query=$(mysql -u root -S /tmp/mysql78.sock -sN -e "select ID, INFO, TIME from information_schema.processlist where TIME>10 and INFO NOT LIKE $cond;"  )
+    query=$(mysql -u root -S /tmp/mysql79.sock -sN -e "select ID, INFO, TIME from information_schema.processlist where TIME>10 and INFO NOT LIKE $cond;"  )
     sleep 1
     printf " %s","${query[0]}";
     sleep 10
